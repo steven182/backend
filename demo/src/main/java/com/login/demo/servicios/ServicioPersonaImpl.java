@@ -1,5 +1,7 @@
 package com.login.demo.servicios;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import com.login.demo.Dao.RepositorioPersona;
 import com.login.demo.modelo.Persona;
@@ -14,5 +16,10 @@ public class ServicioPersonaImpl implements ServicioPersona{
 	@Override
 	public Persona save(Persona persona) {
 		return repositorioPersona.save(persona);
+	}
+
+	@Override
+	public List<Persona> findAll() {
+		return repositorioPersona.findAll();
 	}
 }

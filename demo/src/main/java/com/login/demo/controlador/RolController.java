@@ -1,6 +1,8 @@
 package com.login.demo.controlador;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +29,10 @@ public class RolController {
 		Rol rol = this.maper.readValue(userJson, Rol.class);
 		this.servicioRol.save(rol);
 		return new RestResponse(HttpStatus.OK.value(), "Exito!23");
+	}
+	
+	@RequestMapping(value = "/obtenerRol", method = RequestMethod.GET)
+	public List<Rol> obtenerRol() {
+		return this.servicioRol.findAll();
 	}
 }

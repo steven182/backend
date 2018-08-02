@@ -1,6 +1,8 @@
 package com.login.demo.controlador;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,5 +29,9 @@ public class PersonaController {
 		Persona persona = this.maper.readValue(userJson, Persona.class);
 		this.servicioPersona.save(persona);
 		return new RestResponse(HttpStatus.OK.value(), "Exito!");
+	}
+	@RequestMapping(value = "/obtenerPersona", method = RequestMethod.GET)
+	public List<Persona> obtenerPersona() {
+		return this.servicioPersona.findAll();
 	}
 }

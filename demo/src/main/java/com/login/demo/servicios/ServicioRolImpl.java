@@ -1,5 +1,7 @@
 package com.login.demo.servicios;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.login.demo.Dao.RepositorioRol;
@@ -13,7 +15,11 @@ public class ServicioRolImpl implements ServicioRol {
 
 	@Override
 	public Rol save(Rol rol) {
-		this.repositorioRol.save(rol);
-		return null;
+		return this.repositorioRol.save(rol); 
+	}
+
+	@Override
+	public List<Rol> findAll() {
+		return this.repositorioRol.findAll();
 	}
 }
