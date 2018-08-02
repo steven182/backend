@@ -35,4 +35,14 @@ public class RolController {
 	public List<Rol> obtenerRol() {
 		return this.servicioRol.findAll();
 	}
+	
+	@RequestMapping(value = "/eliminarRol", method = RequestMethod.POST)
+	public void eliminarRol(@RequestBody String userJson) throws Exception {
+		this.maper = new ObjectMapper();
+		Rol rol = this.maper.readValue(userJson, Rol.class);
+		if(rol.getIdRol() == null) {
+			throw new Exception("El id esta nulo");
+		}
+		this.servicioRol.borrarRol(rol.getIdRol());
+	}
 }

@@ -12,4 +12,7 @@ public interface ServicioPersona {
 	//Obtiene la lista de personas
 	List<Persona> findAll();
 
+	//Elimina a una persona dependiendo el ID
+	void borrarPersona(Long idPersona);
+
 }

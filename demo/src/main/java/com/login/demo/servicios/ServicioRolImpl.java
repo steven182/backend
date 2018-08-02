@@ -22,4 +22,10 @@ public class ServicioRolImpl implements ServicioRol {
 	public List<Rol> findAll() {
 		return this.repositorioRol.findAll();
 	}
+
+	@Override
+	public void borrarRol(Long idRol) {
+		this.repositorioRol.deleteById(idRol);
+		
+	}
 }

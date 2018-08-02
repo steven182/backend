@@ -34,4 +34,14 @@ public class PersonaController {
 	public List<Persona> obtenerPersona() {
 		return this.servicioPersona.findAll();
 	}
+	
+	@RequestMapping(value = "/eliminarPersona", method = RequestMethod.POST)
+	public void eliminarPersona(@RequestBody String userJson) throws Exception {
+		this.maper = new ObjectMapper();
+		Persona persona = this.maper.readValue(userJson, Persona.class);
+		if(persona.getIdPersona() == null) {
+			throw new Exception("El id esta nulo");
+		}
+		this.servicioPersona.borrarPersona(persona.getIdPersona());
+	}
 }

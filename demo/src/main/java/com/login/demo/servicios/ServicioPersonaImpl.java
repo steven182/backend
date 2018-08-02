@@ -22,4 +22,10 @@ public class ServicioPersonaImpl implements ServicioPersona{
 	public List<Persona> findAll() {
 		return repositorioPersona.findAll();
 	}
+
+	@Override
+	public void borrarPersona(Long idPersona) {
+		this.repositorioPersona.deleteById(idPersona);
+		
+	}
 }

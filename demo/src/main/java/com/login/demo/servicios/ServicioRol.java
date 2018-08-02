@@ -11,4 +11,7 @@ public interface ServicioRol {
 
 	//Obtiene la lista de roles
 	List<Rol> findAll();
+
+	//Elimina un rol dependiendo el ID
+	void borrarRol(Long idRol);
 }

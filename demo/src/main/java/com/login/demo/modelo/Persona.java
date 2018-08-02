@@ -22,7 +22,7 @@ public class Persona implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idpersona", unique = true, nullable = false)
-	private int idPersona;
+	private Long idPersona;
 	@Column(name = "nombres", nullable = true, length = 45)
 	private String nombres;
 	@Column(name = "apellidos", nullable = true, length = 45)
@@ -38,10 +38,11 @@ public class Persona implements Serializable {
 	@JoinColumn(name = "rol_idrol", referencedColumnName = "idrol")
 	@ManyToOne(optional = false)
 	private Rol rolIdRol;
-	public int getIdPersona() {
+	
+	public Long getIdPersona() {
 		return idPersona;
 	}
-	public void setIdPersona(int idPersona) {
+	public void setIdPersona(Long idPersona) {
 		this.idPersona = idPersona;
 	}
 	public String getNombres() {
