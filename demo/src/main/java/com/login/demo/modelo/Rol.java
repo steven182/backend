@@ -18,7 +18,7 @@ public class Rol implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idrol", unique = true, nullable = false)
 	private int idRol;
 	@Column(name = "nombre", nullable = true, length = 45)
