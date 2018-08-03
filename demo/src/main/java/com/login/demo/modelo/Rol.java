@@ -28,6 +28,7 @@ public class Rol implements Serializable {
 	@Column(name = "estado", nullable = true)
 	private boolean estado = true;
 	
+	public Rol() {}
 	public Long getIdRol() {
 		return idRol;
 	}

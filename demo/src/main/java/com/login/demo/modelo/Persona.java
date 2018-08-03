@@ -34,7 +34,7 @@ public class Persona implements Serializable {
 	@Column(name = "correo", nullable = true, length = 45)
 	private String correo;
 	@Column(name = "clave", nullable = true, length = 45)
-	private String Clave;
+	private String clave;
 	@JoinColumn(name = "rol_idrol", referencedColumnName = "idrol")
 	@ManyToOne(optional = false)
 	private Rol rolIdRol;
@@ -76,10 +76,10 @@ public class Persona implements Serializable {
 		this.correo = correo;
 	}
 	public String getClave() {
-		return Clave;
+		return clave;
 	}
 	public void setClave(String clave) {
-		Clave = clave;
+		this.clave = clave;
 	}
 	public Rol getRolIdRol() {
 		return rolIdRol;
