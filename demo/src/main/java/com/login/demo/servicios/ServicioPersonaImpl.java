@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.login.demo.modelo.Rol;;
 
 @Service
-public class ServicioPersonaImpl implements ServicioPersona{
+public class ServicioPersonaImpl implements ServicioPersona {
 	Rol rol = new Rol();
 	@Autowired
 	protected RepositorioPersona repositorioPersona;
@@ -29,6 +29,12 @@ public class ServicioPersonaImpl implements ServicioPersona{
 	@Override
 	public void borrarPersona(Long idPersona) {
 		this.repositorioPersona.deleteById(idPersona);
-		
+
+	}
+
+	@Override
+	public List<Persona> obtenerPorId(String correo, String clave) {
+		return repositorioPersona.login(correo, clave);
+
 	}
 }

@@ -44,4 +44,20 @@ public class PersonaController {
 		}
 		this.servicioPersona.borrarPersona(persona.getIdPersona());
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public Boolean login(@RequestBody String userJson) throws JsonParseException, JsonMappingException, IOException {
+		this.maper = new ObjectMapper();
+		Persona persona = this.maper.readValue(userJson, Persona.class);
+		List<Persona> per = this.servicioPersona.obtenerPorId(persona.getCorreo(), persona.getClave());
+		if((!per.isEmpty())) {
+			System.out.println("hay algo");
+			per.get(0);
+			return true;
+		}
+			System.out.println("no hay nada");
+			return false;
+		
+	
+	}
 }

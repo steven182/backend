@@ -15,4 +15,6 @@ public interface ServicioPersona {
 	//Elimina a una persona dependiendo el ID
 	void borrarPersona(Long idPersona);
 
+	List<Persona> obtenerPorId(String correo, String clave);
+
 }

@@ -6,19 +6,21 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name = "persona")
+@NamedQuery(name = "Persona.login", query = "select p from Persona p where p.correo=:mail and p.clave=:pass")
 @Access(AccessType.FIELD)
 public class Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idpersona", unique = true, nullable = false)
@@ -38,7 +40,7 @@ public class Persona implements Serializable {
 	@JoinColumn(name = "rol_idrol", referencedColumnName = "idrol")
 	@ManyToOne(optional = false)
 	private Rol rolIdRol;
-	
+
 	public Long getIdPersona() {
 		return idPersona;
 	}
