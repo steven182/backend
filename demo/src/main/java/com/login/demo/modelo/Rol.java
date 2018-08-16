@@ -1,9 +1,13 @@
 package com.login.demo.modelo;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
@@ -27,6 +31,8 @@ public class Rol implements Serializable {
 	private String descripcion;
 	@Column(name = "estado", nullable = true)
 	private boolean estado = true;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "rolIdRol")
+	private List<Persona> listaPersona;
 	
 	public Rol() {}
 	public Long getIdRol() {
@@ -60,7 +66,10 @@ public class Rol implements Serializable {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	
-	
-
+	public List<Persona> getListaPersona() {
+		return listaPersona;
+	}
+	public void setListaPersona(List<Persona> listaPersona) {
+		this.listaPersona = listaPersona;
+	}
 }

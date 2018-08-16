@@ -37,7 +37,7 @@ public class Persona implements Serializable {
 	private String correo;
 	@Column(name = "clave", nullable = true, length = 45)
 	private String clave;
-	@JoinColumn(name = "rol_idrol", referencedColumnName = "idrol")
+	@JoinColumn(name = "idrol", referencedColumnName = "idrol")
 	@ManyToOne(optional = false)
 	private Rol rolIdRol;
 

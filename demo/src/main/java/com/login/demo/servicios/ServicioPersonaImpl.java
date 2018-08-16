@@ -16,9 +16,14 @@ public class ServicioPersonaImpl implements ServicioPersona {
 
 	@Override
 	public Persona save(Persona persona) {
-		rol.setIdrol((long) 2);
-		persona.setRolIdRol(rol);
+		if(persona.getIdPersona() == null) {
+			rol.setIdrol((long) 2);
+			persona.setRolIdRol(rol);
+			repositorioPersona.save(persona);
+		}
+		persona.getRolIdRol();
 		return repositorioPersona.save(persona);
+		
 	}
 
 	@Override
