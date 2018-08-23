@@ -2,8 +2,6 @@ package com.login.demo.servicios;
 
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
-
 import com.login.demo.modelo.Persona;
 
 public interface ServicioPersona {
@@ -17,10 +15,13 @@ public interface ServicioPersona {
 	//Elimina a una persona dependiendo el ID
 	void borrarPersona(Long idPersona);
 
+	//Login
 	List<Persona> obtenerPorId(String correo, String clave);
 	
-	//Paginacion de datos
-	List<Persona> findPagination(Pageable p);
+	//Obtiene una persona por ID
+	Persona findById(Long idPersona);
 	
+	//Obtine una ersona por nombre
+	List<Persona> findByName(String nombre);
 
 }

@@ -12,11 +12,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name = "persona")
-@NamedQuery(name = "Persona.login", query = "select p from Persona p where p.correo=:mail and p.clave=:pass")
+@NamedQueries({
+	@NamedQuery(name = "Persona.login", query = "select p from Persona p where p.correo=:mail and p.clave=:pass"),
+	@NamedQuery(name = "Persona.PersonaById", query = "select p from Persona p where p.idPersona=:id"),
+	@NamedQuery(name = "Persona.PersonaByName", query = "select p from Persona p where p.nombres=:name")})
 @Access(AccessType.FIELD)
 public class Persona implements Serializable {
 
@@ -37,6 +41,8 @@ public class Persona implements Serializable {
 	private String correo;
 	@Column(name = "clave", nullable = true, length = 45)
 	private String clave;
+	@Column(name = "foto", nullable = true, length = 255)
+	private String foto;
 	@JoinColumn(name = "rol_idrol", referencedColumnName = "idrol")
 	@ManyToOne(optional = false)
 	private Rol rolIdRol;
@@ -82,6 +88,12 @@ public class Persona implements Serializable {
 	}
 	public void setClave(String clave) {
 		this.clave = clave;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	public Rol getRolIdRol() {
 		return rolIdRol;

@@ -3,7 +3,6 @@ package com.login.demo.servicios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.login.demo.Dao.RepositorioPersona;
@@ -25,7 +24,6 @@ public class ServicioPersonaImpl implements ServicioPersona {
 		}
 		persona.getRolIdRol();
 		return repositorioPersona.save(persona);
-
 	}
 
 	@Override
@@ -36,17 +34,20 @@ public class ServicioPersonaImpl implements ServicioPersona {
 	@Override
 	public void borrarPersona(Long idPersona) {
 		this.repositorioPersona.deleteById(idPersona);
-
 	}
 
 	@Override
 	public List<Persona> obtenerPorId(String correo, String clave) {
 		return repositorioPersona.login(correo, clave);
-
 	}
 
 	@Override
-	public List<Persona> findPagination(Pageable p) {
-		return repositorioPersona.findAll(p).getContent();
+	public Persona findById(Long idPersona) {
+		 return this.repositorioPersona.PersonaById(idPersona);
+	}
+
+	@Override
+	public List<Persona> findByName(String nombre) {
+		return this.repositorioPersona.PersonaByName(nombre);
 	}
 }
